@@ -86,4 +86,4 @@ class ksuid():
         return "".join(x.encode("hex") for x in self.__uid)
 
     def __hash__(self):
-        return hash(self.__uid)
+        return hash(self.bytes())
