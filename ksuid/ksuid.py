@@ -84,3 +84,6 @@ class ksuid():
             return "".join(list(map(lambda x: format(x, "02x"), self.__uid)))
 
         return "".join(x.encode("hex") for x in self.__uid)
+
+    def __hash__(self):
+        return hash(self.__uid)
