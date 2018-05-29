@@ -58,13 +58,13 @@ class ksuid():
     def toBytes(self):
         return self.bytes()
 
-    @staticmethod
-    def fromBytes(value):
+    @classmethod
+    def fromBytes(cls, value):
         """initializes KSUID from bytes"""
         if len(value) != TIME_STAMP_LENGTH + BODY_LENGTH:
             raise Exception("Wrong bytearray length")
 
-        res = ksuid()
+        res = cls()
         res.__uid = value
         return res
 
@@ -72,11 +72,11 @@ class ksuid():
         """ encodes KSUID with Base62 encoding """
         return encodebytes(self.bytes())
 
-    @staticmethod
-    def fromBase62(data):
+    @classmethod
+    def fromBase62(cls, data):
         """ decodes KSUID from base62 encoding """
         v = decodebytes(data)
-        return ksuid.fromBytes(v)
+        return cls.fromBytes(v)
 
     def __str__(self):
         """ Creates a string representation of the Ksuid from the  bytelist """
